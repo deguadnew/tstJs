@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "eb994ca3-d578-4933-8e94-826e7152a4db",
+		"name": "dataFile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23461356"
+	},
+	"item": [
+		{
+			"name": "Storing In Body",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"collectionData\", jsonData);",
+							"",
+							"//console.log(pm.collectionVariables.get(\"collectionData\"));",
+							"",
+							"console.log(data);",
+							"pm.test(\"Checking Equal\", function () {",
+							"const isEqual = _.isEqual(jsonData, data);",
+							"    pm.expect(isEqual).to.be.true;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://53d2d583-e526-4169-a34b-74d12c4e8542.mock.pstmn.io/pcs/v5/applicableOceanFreightRates?cargoWeight=18000&cargoWeightUnit=Kilogram&containerSpecifications=20DV&destinations=INAGR&freightIsOfAllKinds=True&portsOfDischarge=INNSA&portsOfLoading=USBAL&rateCardTypes=Tariff&reason=instantquote&validAfter=12+SEP+2021&CargoIsDangerous=False&ContainerIsShipperOwned=False&reference=FXH97WX9T.00001.1",
+					"protocol": "https",
+					"host": [
+						"53d2d583-e526-4169-a34b-74d12c4e8542",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"pcs",
+						"v5",
+						"applicableOceanFreightRates"
+					],
+					"query": [
+						{
+							"key": "cargoWeight",
+							"value": "18000"
+						},
+						{
+							"key": "cargoWeightUnit",
+							"value": "Kilogram"
+						},
+						{
+							"key": "containerSpecifications",
+							"value": "20DV"
+						},
+						{
+							"key": "destinations",
+							"value": "INAGR"
+						},
+						{
+							"key": "freightIsOfAllKinds",
+							"value": "True"
+						},
+						{
+							"key": "portsOfDischarge",
+							"value": "INNSA"
+						},
+						{
+							"key": "portsOfLoading",
+							"value": "USBAL"
+						},
+						{
+							"key": "rateCardTypes",
+							"value": "Tariff"
+						},
+						{
+							"key": "reason",
+							"value": "instantquote"
+						},
+						{
+							"key": "validAfter",
+							"value": "12+SEP+2021"
+						},
+						{
+							"key": "CargoIsDangerous",
+							"value": "False"
+						},
+						{
+							"key": "ContainerIsShipperOwned",
+							"value": "False"
+						},
+						{
+							"key": "reference",
+							"value": "FXH97WX9T.00001.1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.collectionVariables.clear();"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "collectionData",
+			"value": ""
+		}
+	]
+}
