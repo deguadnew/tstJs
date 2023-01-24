@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "8586e2a0-a779-4773-bd58-f034a446c18b",
+		"name": "Collections PCS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23461356"
+	},
+	"item": [
+		{
+			"name": "PCS Call - AOFR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"const actualResponse = pm.response.json();",
+							" eval(pm.environment.get(\"fun\"));",
+							"",
+							" pm.test(\"Checking the Status code is 200\", function () {",
+							"    pm.expect(checkJsonEquality(actualResponse,data)).to.be.true;",
+							"});",
+							"",
+							"pm.test(\"Checking a sub-string \", function () {",
+							"    pm.expect(checkingStatusCode(pm.response));",
+							" });",
+							"",
+							" pm.test(\"checking  matches sub-string\", function () {",
+							"    pm.expect(checkSubtrings(pm.response.text(),\"reference\"));",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 1000\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"",
+							" ",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://53d2d583-e526-4169-a34b-74d12c4e8542.mock.pstmn.io/pcs/v5/applicableOceanFreightRates?cargoWeight=18000&cargoWeightUnit=Kilogram&containerSpecifications=20DV&destinations=INAGR&freightIsOfAllKinds=True&portsOfDischarge=INNSA&portsOfLoading=USBAL&rateCardTypes=Tariff&reason=instantquote&validAfter=12+SEP+2021&CargoIsDangerous=False&ContainerIsShipperOwned=False&reference=FXH97WX9T.00001.1",
+					"protocol": "https",
+					"host": [
+						"53d2d583-e526-4169-a34b-74d12c4e8542",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"pcs",
+						"v5",
+						"applicableOceanFreightRates"
+					],
+					"query": [
+						{
+							"key": "cargoWeight",
+							"value": "18000"
+						},
+						{
+							"key": "cargoWeightUnit",
+							"value": "Kilogram"
+						},
+						{
+							"key": "containerSpecifications",
+							"value": "20DV"
+						},
+						{
+							"key": "destinations",
+							"value": "INAGR"
+						},
+						{
+							"key": "freightIsOfAllKinds",
+							"value": "True"
+						},
+						{
+							"key": "portsOfDischarge",
+							"value": "INNSA"
+						},
+						{
+							"key": "portsOfLoading",
+							"value": "USBAL"
+						},
+						{
+							"key": "rateCardTypes",
+							"value": "Tariff"
+						},
+						{
+							"key": "reason",
+							"value": "instantquote"
+						},
+						{
+							"key": "validAfter",
+							"value": "12+SEP+2021"
+						},
+						{
+							"key": "CargoIsDangerous",
+							"value": "False"
+						},
+						{
+							"key": "ContainerIsShipperOwned",
+							"value": "False"
+						},
+						{
+							"key": "reference",
+							"value": "FXH97WX9T.00001.1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.sendRequest(\"https://raw.githubusercontent.com/deguadnew/tstJs/main/librarySet.js\", (err,res)=>{",
+					"    pm.environment.set(\"fun\", res.text());",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "collectionData",
+			"value": ""
+		}
+	]
+}
