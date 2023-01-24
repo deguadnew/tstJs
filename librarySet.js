@@ -1,3 +1,6 @@
-function Hello(){
-    console.log("Hello Library I am here");
+function checkJsonEquality(actualJson, expectedJson){
+    if(_.Equal(actualJson,expectedJson) == true)
+    return true;
+    else 
+    return false;
 }
