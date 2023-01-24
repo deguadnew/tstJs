@@ -1,0 +1,212 @@
+[{
+    "items": [
+        {
+            "reference": "FXH97WX9T.00001",
+            "version": 1,
+            "externalReference": "PCS-SANITY- PURPOSE DO NOT MODIFY",
+            "rateCardType": "Tariff",
+            "tariffTier": 1,
+            "rateHolders": [],
+            "nacCodes": [],
+            "portsOfLoading": [
+                {
+                    "portId": 84,
+                    "unCode": "USBAL"
+                }
+            ],
+            "portsOfDischarge": [
+                {
+                    "portId": 31,
+                    "unCode": "INNSA"
+                }
+            ],
+            "origins": [],
+            "originDryPorts": [],
+            "destinationDryPorts": [],
+            "destinations": [
+                {
+                    "locationId": 3946,
+                    "unCode": "INAGR"
+                }
+            ],
+            "destinationModeOfTransport": "TBA",
+            "containerSpecifications": [
+                {
+                    "containerSizeTypeId": 6,
+                    "sizeAndType": "20DV",
+                    "isNonOperatingReefer": false
+                }
+            ],
+            "containerIsEmpty": false,
+            "weightUnit": "Kilogram",
+            "commodityHarmonizedSystemCodes": [],
+            "commodityHarmonizedSystemCodesExclusions": [],
+            "dangerousCargoSubstances": [],
+            "dangerousCargoClass": [],
+            "loadingVessels": [],
+            "amountIsAllIn": false,
+            "voyage": null,
+            "currencyId": 180,
+            "route": null,
+            "originShipmentMethod": "FCL",
+            "destinationShipmentMethod": "FCL",
+            "accessorialChargeGroups": [
+                {
+                    "conditions": [
+                        {
+                            "portsOfLoading": [
+                                {
+                                    "portId": 84,
+                                    "unCode": "USBAL"
+                                }
+                            ],
+                            "portsOfDischarge": [
+                                {
+                                    "portId": 31,
+                                    "unCode": "INNSA"
+                                }
+                            ],
+                            "containerSpecifications": [
+                                {
+                                    "containerSizeTypeId": 6,
+                                    "sizeAndType": "20DV",
+                                    "isNonOperatingReefer": false
+                                }
+                            ],
+                            "origins": [],
+                            "originDryPorts": [],
+                            "destinations": [
+                                {
+                                    "locationId": 3946,
+                                    "unCode": "INAGR"
+                                }
+                            ],
+                            "destinationDryPorts": [],
+                            "containerIsShipperOwned": false,
+                            "cargoIsDangerous": false
+                        }
+                    ],
+                    "accessorialCharges": [
+                        {
+                            "chargeCodeId": 127,
+                            "rates": [
+                                {
+                                    "calculationMethod": {
+                                        "type": "FixedAmount",
+                                        "amount": 40,
+                                        "currency": "USD",
+                                        "chargeLevel": "Teu",
+                                        "calculationMethodDescription": "USD 40 per Teu",
+                                        "currencyId": 180
+                                    },
+                                    "validFrom": "2019-11-01",
+                                    "validTo": null,
+                                    "amount": 40,
+                                    "currency": "USD"
+                                }
+                            ],
+                            "isInvoicedAsAllIn": false,
+                            "code": "RNT",
+                            "reference": "A9W4HCHNW",
+                            "group": "Ocean",
+                            "applicability": "AsFreight",
+                            "isLocal": false,
+                            "isPaidWithFreight": false,
+                            "applicabilityToFreightAmount": "SubjectTo",
+                            "isWaived": false,
+                            "isInvoicedAsAllInGroupName": null,
+                            "isInvoicedAsAllInGroupID": null,
+                            "longDisplayName": "Round trip [RNT]",
+                            "visibleOnManifest": true,
+                            "dtx": "RNT",
+                            "isVatos": true,
+                            "paymentMethods": "Prepaid, Collect, Elsewhere",
+                            "paymentMethodsAgencies": null,
+                            "hasRemainingConditions": false
+                        },
+                        {
+                            "chargeCodeId": 15,
+                            "rates": [],
+                            "isInvoicedAsAllIn": false,
+                            "code": "CCL",
+                            "reference": "APKJHKHRF",
+                            "group": "Ocean",
+                            "applicability": "AsFreight",
+                            "isLocal": false,
+                            "isPaidWithFreight": false,
+                            "applicabilityToFreightAmount": "SubjectTo",
+                            "isWaived": false,
+                            "isInvoicedAsAllInGroupName": null,
+                            "isInvoicedAsAllInGroupID": null,
+                            "longDisplayName": "Container cleaning [CCL]",
+                            "visibleOnManifest": true,
+                            "dtx": "CCL",
+                            "isVatos": true,
+                            "paymentMethods": "Prepaid, Collect, Elsewhere",
+                            "paymentMethodsAgencies": null,
+                            "hasRemainingConditions": false
+                        },
+                        {
+                            "chargeCodeId": 22,
+                            "rates": [
+                                {
+                                    "calculationMethod": {
+                                        "type": "FixedAmount",
+                                        "amount": 200,
+                                        "currency": "USD",
+                                        "chargeLevel": "Equipment",
+                                        "calculationMethodDescription": "USD 200 per Equipment",
+                                        "currencyId": 180
+                                    },
+                                    "validFrom": "2021-01-25",
+                                    "validTo": null,
+                                    "amount": 200,
+                                    "currency": "USD"
+                                }
+                            ],
+                            "isInvoicedAsAllIn": false,
+                            "code": "CMD",
+                            "reference": "APJJXCPTN",
+                            "group": "Ocean",
+                            "applicability": "AtDestination",
+                            "isLocal": false,
+                            "isPaidWithFreight": false,
+                            "applicabilityToFreightAmount": "SubjectTo",
+                            "isWaived": false,
+                            "isInvoicedAsAllInGroupName": null,
+                            "isInvoicedAsAllInGroupID": null,
+                            "longDisplayName": "Mis declaration fee [CMD]",
+                            "visibleOnManifest": true,
+                            "dtx": "CMD",
+                            "isVatos": true,
+                            "paymentMethods": "Prepaid, Collect, Elsewhere",
+                            "paymentMethodsAgencies": null,
+                            "hasRemainingConditions": false
+                        }
+                    ]
+                }
+            ],
+            "bookingPeriodStart": null,
+            "bookingPeriodEnd": null,
+            "quoteExpirationDate": null,
+            "numberOfDaysUntilQuoteExpiration": null,
+            "validFrom": "2022-07-28",
+            "validTo": null,
+            "calculationDate": "2022-07-28",
+            "minWeight": null,
+            "maxWeight": 18000,
+            "amount": 123,
+            "currency": "USD",
+            "paymentMethods": "Prepaid, Collect, Elsewhere",
+            "paymentMethodsAgencies": null,
+            "publicationChannel": "Instant quote,Instant quote premium",
+            "temperatureUnit": "Celsius",
+            "minTemperature": null,
+            "maxTemperature": null
+        }
+    ],
+    "count": 1,
+    "totalCount": 1,
+    "pageIndex": 0,
+    "totalPages": 1
+}]

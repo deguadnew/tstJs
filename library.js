@@ -1,3 +1,6 @@
-function Hello(){
-    console.log("Hell, It is me , funciton");
+function checkEqualJson(actualResponse, expectedResponse){
+    if(_.isEqual(jsonData, data) == true)
+    return true;
+    else
+    return false;
 }
