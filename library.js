@@ -1,5 +1,5 @@
 function checkEqualJson(actualResponse, expectedResponse){
-    if(_.isEqual(jsonData, data) == true)
+    if(_.isEqual(actualResponse, expectedResponse) == true)
     return true;
     else
     return false;
