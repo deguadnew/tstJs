@@ -1,5 +1,5 @@
 function checkJsonEquality(actualJson, expectedJson){
-    if(_.Equal(actualJson,expectedJson) == true)
+    if(_.isEqual(actualJson,expectedJson) == true)
     return true;
     else 
     return false;
