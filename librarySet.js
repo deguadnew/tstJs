@@ -4,7 +4,7 @@
  * @param {*} expectedJson  refers the expected hson to receive
  * @returns - boolean 
  */
-function checkJsonEquality(actualJson, expectedJson){
+function checkEqualJson(actualJson, expectedJson){
     if(_.isEqual(actualJson,expectedJson))
     return true;
     else 
@@ -15,7 +15,7 @@ function checkJsonEquality(actualJson, expectedJson){
  * @param {*} actualJson  refers the real time response obtained
  * @returns boolean
  */
-function checkingStatusCode(actualJson){
+function checkResponseStatusCode(actualJson){
     if(actualJson.code == 200)
     return true;
     else
@@ -27,7 +27,7 @@ function checkingStatusCode(actualJson){
  * @param {*} targetString  the target string to look on from the actual response
  * @returns boolean
  */
-function checkSubtrings(actualJson, targetString){
+function checkSubstring(actualJson, targetString){
     if(actualJson.includes(targetString)){
         return true;
     }
