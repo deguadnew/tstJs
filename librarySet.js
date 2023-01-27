@@ -1,10 +1,10 @@
 /**
  * 
  * @param {*} actualJson  refers the real time response obtained
- * @param {*} expectedJson  refers the expected hson to receive
+ * @param {*} expectedJson  refers the expected Json to receive
  * @returns - boolean 
  */
-function checkEqualJson(actualJson, expectedJson){
+function comapreJsonForExactMatch(actualJson, expectedJson){
     if(_.isEqual(actualJson,expectedJson))
     return true;
     else 
