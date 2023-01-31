@@ -32,7 +32,7 @@
 									"});\r",
 									"\r",
 									"/**Checking the length of the Json */ \r",
-									"pm.test(\"Checking Json Empty or Not \", function () {\r",
+									"pm.test(\"Checking Json Empty or Not from the response\", function () {\r",
 									"    pm.expect(jsonResponse.items[0].length).to.be.greaterThan(1);\r",
 									"});\r",
 									"\r",
