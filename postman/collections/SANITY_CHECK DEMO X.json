@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "b87a77db-631f-4d99-9058-c2e9c54b8818",
+		"name": "SANITY_CHECK DEMO X",
+		"description": "This is a Sanity check for PCS services. The base URL for each environment is as follow\n\nbaseURL\n\nhttps://ovhq-api-int.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-tst.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-dem.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-aut.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-uat.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-pre.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api.ch001-ov-h.identity.msc.com:8065/msc\n\n\nKeyID\n\n08830f1d8-6fa8-4e64-8898-db8097a8036a - test\ne39c8a9b-e8f9-4244-9584-501cdafc54a8 - CI\nd1cdfbbc-9f6d-4212-b7d8-ba8545eb768f - demo\n31d8946d-f991-400e-851b-59b90df1d609 - UAT\ndfe69819-2bd4-4e44-a764-0f5e7172b6ac - PREPROD\n\n\nAuth URL:https://login.microsoftonline.com/088e9b00-ffd0-458e-bfa1-acf4c596d3cb/oauth2/v2.0/authorize\n\nAccessToken:https://login.microsoftonline.com/088e9b00-ffd0-458e-bfa1-acf4c596d3cb/oauth2/v2.0/token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "18481829-b87a77db-631f-4d99-9058-c2e9c54b8818"
+	},
+	"item": [
+		{
+			"name": "V5",
+			"item": [
+				{
+					"name": "V5_DEM_AFRRv_CustomerOffer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bd4207dd-ba90-42e0-84ad-07465fda738a",
+								"exec": [
+									"var jsonResponse = pm.response.json();\r",
+									"var accessorialChargeGroups=jsonResponse.items[0]\r",
+									".accessorialChargeGroups[0];\r",
+									"\r",
+									"\r",
+									"var checkLength=null;\r",
+									"\r",
+									"\r",
+									"/**Test Status Code 200 OK */ \r",
+									"pm.test(\"Status code is OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"/**Checking the length of the Json */ \r",
+									"pm.test(\"Checking Json Empty or Not \", function () {\r",
+									"    pm.expect(jsonResponse.items[0].length).to.be.greaterThan(1);\r",
+									"});\r",
+									"\r",
+									"/***\r",
+									" * \r",
+									" * @Accessorial Charge Group\r",
+									" * @Accessorial Groups Conditions\r",
+									" * @Accessorial Charges\r",
+									" * @Accessorial Container Specification\r",
+									" * @Ports of Loading\r",
+									" * @Ports of Discharge\r",
+									" */\r",
+									"_.each(pm.collectionVariables.get('fieldSet'),(aField)=>{\r",
+									"    pm.test(\"Checking  \" + aField ,function () {\r",
+									"        if(aField == \"accessChargeGroup\"){\r",
+									"            commLengthChecker = accessorialChargeGroups;\r",
+									"\r",
+									"        }\r",
+									"        else if(aField == \"accessGroupConditons\"){\r",
+									"            commLengthChecker=accessorialChargeGroups.conditions;\r",
+									"        }\r",
+									"        else if (aField == \"accessCharges\"){\r",
+									"           commLengthChecker= accessorialChargeGroups.accessorialCharges;\r",
+									"        }\r",
+									"        else if (aField == \"containerSpecifications\"){\r",
+									"           commLengthChecker= jsonResponse.items[0]\r",
+									"           .containerSpecifications\r",
+									"        }\r",
+									"        else if (aField == \"pol\"){\r",
+									"           commLengthChecker= accessorialChargeGroups\r",
+									"           .conditions[0].portsOfLoading;\r",
+									"        }\r",
+									"         else if (aField == \"pod\"){\r",
+									"           commLengthChecker= accessorialChargeGroups\r",
+									"           .conditions[0].portsOfDischarge;\r",
+									"        }\r",
+									"        else{\r",
+									"            pm.expect.fail(\"The expected Fields are not available in the response \" + aField);\r",
+									"        }\r",
+									"    pm.expect(commLengthChecker.length).to.not.equal(0);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "5726cb56-d706-4a05-be42-a0e1bbdfd553",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "KeyID",
+								"value": "{{KeyID}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/pcs/v5/applicableOceanFreightRates?Reason=CustomerOffer&RateReferences=FCPCXHJTF.00001.1&RateHolders=IN108451",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"pcs",
+								"v5",
+								"applicableOceanFreightRates"
+							],
+							"query": [
+								{
+									"key": "Reason",
+									"value": "CustomerOffer"
+								},
+								{
+									"key": "RateCardTypes",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "ValidBefore",
+									"value": "2021-09-17",
+									"disabled": true
+								},
+								{
+									"key": "ContainerSpecifications",
+									"value": "40DV,40HC",
+									"disabled": true
+								},
+								{
+									"key": "FreightIsOfAllKinds",
+									"value": "True",
+									"disabled": true
+								},
+								{
+									"key": "containerIsEmpty",
+									"value": "flase",
+									"disabled": true
+								},
+								{
+									"key": "Origins",
+									"value": "CAEDM",
+									"disabled": true
+								},
+								{
+									"key": "CargoWeight",
+									"value": "10000",
+									"disabled": true
+								},
+								{
+									"key": "CargoWeightUnit",
+									"value": "Kilogram",
+									"disabled": true
+								},
+								{
+									"key": "NamedAccounts",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "RateReferences",
+									"value": "FCPCXHJTF.00001.1"
+								},
+								{
+									"key": "RateHolders",
+									"value": "IN108451"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "6bf5b3b0-cc21-42eb-bf7d-0a48849b293d",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						],
+						"id": "55f5beb2-33e4-4d66-bf3a-dde1a5515e13"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						],
+						"id": "099bed6a-58a9-4118-8bbf-70e534ee161e"
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "tokenType",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "accessToken",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSJ9.eyJhdWQiOiI5ODhkMWU5Ny0zNjZlLTQ0MTktODFmYS1iMjRmYjBmYWFiMWYiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vMDg4ZTliMDAtZmZkMC00NThlLWJmYTEtYWNmNGM1OTZkM2NiL3YyLjAiLCJpYXQiOjE2NjYwNzg3MTEsIm5iZiI6MTY2NjA3ODcxMSwiZXhwIjoxNjY2MDg0Mjk4LCJhaW8iOiJBVFFBeS84VEFBQUErQ2pzWnlmMjZCL2VJZEVyRGMzZ1cxTSt1L3REaG9nQmpqbHZuS0V5SDFIUTI4U1pOVm5BdHBrTlVCL0FJRitDIiwiYXpwIjoiOTg4ZDFlOTctMzY2ZS00NDE5LTgxZmEtYjI0ZmIwZmFhYjFmIiwiYXpwYWNyIjoiMCIsImVtYWlsIjoiZGVndS5kaWx1YWRuZXdAbXNjLmNvbSIsIm5hbWUiOiJEZWd1IERpbHUgQWRuZXcgKE1TQyBUZWNobm9sb2d5IEl0YWxpYSkiLCJvaWQiOiIwNWZhZjEwMS1lNzEwLTRkZTgtYTZiNy1hNDQyODIxNWY3MWYiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJkZWd1LmRpbHVhZG5ld0Btc2MuY29tIiwicmgiOiIwLkFSTUFBSnVPQ05EX2prV19vYXoweFpiVHk1Y2VqWmh1TmhsRWdmcXlUN0Q2cXg4VEFIRS4iLCJzY3AiOiJDYWxlbmRhcnMuUmVhZFdyaXRlIENvbnRhY3RzLlJlYWRXcml0ZSBEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgRmlsZXMuUmVhZCBGaWxlcy5SZWFkLkFsbCBGaWxlcy5SZWFkV3JpdGUgRmlsZXMuUmVhZFdyaXRlLkFsbCBNYWlsLlJlYWQuU2hhcmVkIE1haWwuUmVhZFdyaXRlIE1haWwuU2VuZCBQZW9wbGUuUmVhZC5BbGwgU2l0ZXMuUmVhZC5BbGwgU2l0ZXMuUmVhZFdyaXRlLkFsbCBUZWFtLlJlYWRCYXNpYy5BbGwgVGVhbVNldHRpbmdzLlJlYWQuQWxsIFVzZXIuUmVhZCBVc2VyLlJlYWQuQWxsIiwic3ViIjoiMnpkMm5ySGg0Y3ZHX1BVaXBfV2xtVmV5eDFuTGtxcEdvclBUNzloSHd0ayIsInRpZCI6IjA4OGU5YjAwLWZmZDAtNDU4ZS1iZmExLWFjZjRjNTk2ZDNjYiIsInV0aSI6IjN5ZFh0cVVqRzBhY0pDYXQ5X3QwQUEiLCJ2ZXIiOiIyLjAifQ.RvzU6Y6yDsgP4QO0tDQzhDIpjEZh29xlcG91UkIWIBrsZ1UQsgBx5-wUmCdj-zlBdoM1gXBAzSCUrx0lRspgRwWOB3ZdkW64OOMmutllFpnJjRLUduqVQFOEJZjAC4cXg5_oQ1eWNUfOgwR_Jm5zqUcp7skO_xtEUjdRY1_vs3J0DMDVVZH-BuyUQ8CjZkFPd9e_M1CvjaSuyHFjbeJHXifj7XSOj__id3gKvPeVrJzCq9Th0EuTZT2qEsPTmLY_OWqU0KpKBlDXKQeZ0_FLFxdNrlmCNeLgHizB3VI6mwq-bunavvXPv7xNol4LR2D0P4ku6dB8gKAm3MsTxD5qkA",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://login.microsoftonline.com/088e9b00-ffd0-458e-bfa1-acf4c596d3cb/oauth2/v2.0/token",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://login.microsoftonline.com/088e9b00-ffd0-458e-bfa1-acf4c596d3cb/oauth2/v2.0/authorize",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "{{scope}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{cliendId}}",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "{{msalUri}}",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "{{envName}}",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"/** Json Fields under Check */",
+					"const jsonFieldSet = ['accessChargeGroup',",
+					"'accessGroupConditons', 'accessCharges',",
+					"'containerSpecifications','pol',",
+					"'pod'];",
+					"",
+					"pm.collectionVariables.set('fieldSet',jsonFieldSet); ",
+					""
+				],
+				"id": "83d65cd9-aa67-4892-a3a8-2c7fae74f35a"
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "424a9686-7a03-480f-bcd3-8749971bcf62"
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e3511706-740e-4afb-92fb-10ecda79c147",
+			"key": "accessorialChargeRate",
+			"value": ""
+		},
+		{
+			"id": "569f5dbe-342d-433b-a418-6fec8d18d1d2",
+			"key": "accessorialGroupconditons",
+			"value": ""
+		},
+		{
+			"id": "e658e60f-e6e9-46b9-a7fa-4c0447cd4ee2",
+			"key": "portOfLoading",
+			"value": ""
+		},
+		{
+			"id": "43febd74-df41-4e42-ab31-eb11981482bd",
+			"key": "portOfDischarge",
+			"value": ""
+		},
+		{
+			"id": "95969f6a-1f48-4014-bdf9-f520f7821055",
+			"key": "containerSpecifications",
+			"value": ""
+		},
+		{
+			"id": "5b72b0fe-021d-4c12-bb6c-9fb1faa19df8",
+			"key": "accessChargeRate",
+			"value": ""
+		},
+		{
+			"id": "5bb26aaa-468b-4662-aa13-ec939b2841a8",
+			"key": "accessChargeGroup",
+			"value": ""
+		},
+		{
+			"id": "2c8af65f-4786-4015-91e6-5da4a99b045f",
+			"key": "accessCharges",
+			"value": ""
+		},
+		{
+			"id": "6f37b8bc-5bff-4185-aa8e-72886dd8969e",
+			"key": "contSpecifications",
+			"value": ""
+		},
+		{
+			"id": "d1f9c43b-16ac-4935-8f27-cf1accd81c3c",
+			"key": "pol",
+			"value": ""
+		},
+		{
+			"id": "5ae9a1ce-0224-4d38-a2ba-30c2078125d5",
+			"key": "pod",
+			"value": ""
+		},
+		{
+			"id": "c36c872c-d1d9-44df-bd05-551d244df467",
+			"key": "fieldSet",
+			"value": ""
+		}
+	]
+}
