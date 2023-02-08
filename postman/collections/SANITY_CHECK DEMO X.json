@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "b87a77db-631f-4d99-9058-c2e9c54b8818",
+		"_postman_id": "3eb3720d-6122-4a7d-97f4-9a2071e0f9a1",
 		"name": "SANITY_CHECK DEMO X",
 		"description": "This is a Sanity check for PCS services. The base URL for each environment is as follow\n\nbaseURL\n\nhttps://ovhq-api-int.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-tst.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-dem.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-aut.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-uat.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api-pre.ch001-ov-h.identity.msc.com:8065/msc\nhttps://ovhq-api.ch001-ov-h.identity.msc.com:8065/msc\n\n\nKeyID\n\n08830f1d8-6fa8-4e64-8898-db8097a8036a - test\ne39c8a9b-e8f9-4244-9584-501cdafc54a8 - CI\nd1cdfbbc-9f6d-4212-b7d8-ba8545eb768f - demo\n31d8946d-f991-400e-851b-59b90df1d609 - UAT\ndfe69819-2bd4-4e44-a764-0f5e7172b6ac - PREPROD\n\n\nAuth URL:https://login.microsoftonline.com/088e9b00-ffd0-458e-bfa1-acf4c596d3cb/oauth2/v2.0/authorize\n\nAccessToken:https://login.microsoftonline.com/088e9b00-ffd0-458e-bfa1-acf4c596d3cb/oauth2/v2.0/token",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "18481829-b87a77db-631f-4d99-9058-c2e9c54b8818"
+		"_exporter_id": "18481829"
 	},
 	"item": [
 		{
@@ -16,7 +16,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bd4207dd-ba90-42e0-84ad-07465fda738a",
 								"exec": [
 									"var jsonResponse = pm.response.json();\r",
 									"var accessorialChargeGroups=jsonResponse.items[0]\r",
@@ -27,7 +26,7 @@
 									"\r",
 									"\r",
 									"/**Test Status Code 200 OK */ \r",
-									"pm.test(\"Status code is OK\", function () {\r",
+									"pm.test(\"Status code is OK As Response\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
@@ -80,10 +79,6 @@
 							}
 						}
 					],
-					"id": "5726cb56-d706-4a05-be42-a0e1bbdfd553",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -167,7 +162,6 @@
 					"response": []
 				}
 			],
-			"id": "6bf5b3b0-cc21-42eb-bf7d-0a48849b293d",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -175,8 +169,7 @@
 						"type": "text/javascript",
 						"exec": [
 							""
-						],
-						"id": "55f5beb2-33e4-4d66-bf3a-dde1a5515e13"
+						]
 					}
 				},
 				{
@@ -185,8 +178,7 @@
 						"type": "text/javascript",
 						"exec": [
 							""
-						],
-						"id": "099bed6a-58a9-4118-8bbf-70e534ee161e"
+						]
 					}
 				}
 			]
@@ -267,8 +259,7 @@
 					"",
 					"pm.collectionVariables.set('fieldSet',jsonFieldSet); ",
 					""
-				],
-				"id": "83d65cd9-aa67-4892-a3a8-2c7fae74f35a"
+				]
 			}
 		},
 		{
@@ -277,69 +268,56 @@
 				"type": "text/javascript",
 				"exec": [
 					""
-				],
-				"id": "424a9686-7a03-480f-bcd3-8749971bcf62"
+				]
 			}
 		}
 	],
 	"variable": [
 		{
-			"id": "e3511706-740e-4afb-92fb-10ecda79c147",
 			"key": "accessorialChargeRate",
 			"value": ""
 		},
 		{
-			"id": "569f5dbe-342d-433b-a418-6fec8d18d1d2",
 			"key": "accessorialGroupconditons",
 			"value": ""
 		},
 		{
-			"id": "e658e60f-e6e9-46b9-a7fa-4c0447cd4ee2",
 			"key": "portOfLoading",
 			"value": ""
 		},
 		{
-			"id": "43febd74-df41-4e42-ab31-eb11981482bd",
 			"key": "portOfDischarge",
 			"value": ""
 		},
 		{
-			"id": "95969f6a-1f48-4014-bdf9-f520f7821055",
 			"key": "containerSpecifications",
 			"value": ""
 		},
 		{
-			"id": "5b72b0fe-021d-4c12-bb6c-9fb1faa19df8",
 			"key": "accessChargeRate",
 			"value": ""
 		},
 		{
-			"id": "5bb26aaa-468b-4662-aa13-ec939b2841a8",
 			"key": "accessChargeGroup",
 			"value": ""
 		},
 		{
-			"id": "2c8af65f-4786-4015-91e6-5da4a99b045f",
 			"key": "accessCharges",
 			"value": ""
 		},
 		{
-			"id": "6f37b8bc-5bff-4185-aa8e-72886dd8969e",
 			"key": "contSpecifications",
 			"value": ""
 		},
 		{
-			"id": "d1f9c43b-16ac-4935-8f27-cf1accd81c3c",
 			"key": "pol",
 			"value": ""
 		},
 		{
-			"id": "5ae9a1ce-0224-4d38-a2ba-30c2078125d5",
 			"key": "pod",
 			"value": ""
 		},
 		{
-			"id": "c36c872c-d1d9-44df-bd05-551d244df467",
 			"key": "fieldSet",
 			"value": ""
 		}
